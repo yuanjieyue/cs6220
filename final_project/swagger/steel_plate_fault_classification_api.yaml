@@ -1,0 +1,168 @@
+swagger: '2.0'
+info:
+  title: Steel Plate Fault Classification API
+  version: "0.1"
+  description: An API that can classify Steel Plate Fault Types
+
+paths:
+  /health:
+    get:
+      summary: Checks the health of the service
+      description: Returns the health status of the service
+      operationId: steel_plate_fault_classification_api.health
+      responses:
+        '200':
+          description: Service is healthy
+        '500':
+          description: Service is unhealthy
+
+  /predict:
+    post:
+      summary: Entrypoint to our prediction function
+      operationId: steel_plate_fault_classification_api.predict
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+        - in: formData
+          name: X_Minimum
+          required: true
+          description: X_Minimum
+          type: number
+        - in: formData
+          name: X_Maximum
+          required: true
+          description: X_Maximum
+          type: number
+        - in: formData
+          name: Y_Minimum
+          required: true
+          description: Y_Minimum
+          type: number
+        - in: formData
+          name: Y_Maximum
+          required: true
+          description: Y_Maximum
+          type: number
+        - in: formData
+          name: Pixels_Areas
+          required: true
+          description: Pixels_Areas
+          type: number
+        - in: formData
+          name: X_Perimeter
+          required: true
+          description: X_Perimeter
+          type: number
+        - in: formData
+          name: Y_Perimeter
+          required: true
+          description: Y_Perimeter
+          type: number
+        - in: formData
+          name: Sum_of_Luminosity
+          required: true
+          description: Sum_of_Luminosity
+          type: number
+        - in: formData
+          name: Minimum_of_Luminosity
+          required: true
+          description: Minimum_of_Luminosity
+          type: number
+        - in: formData
+          name: Maximum_of_Luminosity
+          required: true
+          description: Maximum_of_Luminosity
+          type: number
+        - in: formData
+          name: Length_of_Conveyer
+          required: true
+          description: Length_of_Conveyer
+          type: number
+        - in: formData
+          name: TypeOfSteel_A300
+          required: true
+          description: TypeOfSteel_A300
+          type: number
+        - in: formData
+          name: TypeOfSteel_A400
+          required: true
+          description: TypeOfSteel_A400
+          type: number
+        - in: formData
+          name: Steel_Plate_Thickness
+          required: true
+          description:  Steel_Plate_Thickness
+          type: number
+        - in: formData
+          name: Edges_Index
+          required: true
+          description: Edges_Index
+          type: number
+        - in: formData
+          name: Empty_Index
+          required: true
+          description: Empty_Index
+          type: number
+        - in: formData
+          name: Square_Index
+          required: true
+          description: Square_Index
+          type: number
+        - in: formData
+          name: Outside_X_Index
+          required: true
+          description: Outside_X_Index
+          type: number
+        - in: formData
+          name: Edges_X_Index
+          required: true
+          description: Edges_X_Index
+          type: number
+        - in: formData
+          name: Edges_Y_Index
+          required: true
+          description: Edges_Y_Index
+          type: number
+        - in: formData
+          name: Outside_Global_Index
+          required: true
+          description: Outside_Global_Index
+          type: number
+        - in: formData
+          name: LogOfAreas
+          required: true
+          description: LogOfAreas
+          type: number
+        - in: formData
+          name: Log_X_Index
+          required: true
+          description: Log_X_Index
+          type: number
+        - in: formData
+          name: Log_Y_Index
+          required: true
+          description: Log_Y_Index
+          type: number
+        - in: formData
+          name: Orientation_Index
+          required: true
+          description: Orientation_Index
+          type: number
+        - in: formData
+          name: Luminosity_Index
+          required: true
+          description: Luminosity_Index
+          type: number
+        - in: formData
+          name: SigmoidOfAreas
+          required: true
+          description: SigmoidOfAreas
+          type: number
+
+      responses:
+        '200':
+          description: Classification performed successfully
+        '500':
+          description: Unable to perform the classification
